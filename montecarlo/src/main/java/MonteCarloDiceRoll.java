@@ -1,4 +1,4 @@
-package unlu;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,10 @@ import java.util.Random;
 
 public class MonteCarloDiceRoll {
 
-    public static void main(String[] args) {
+    public MonteCarloDiceRoll() {
+    }
+
+    public void metodoMonteCarlo() {
         long numeroDeSimulaciones = 100_000_000; // Número de veces que lanzaremos los dos dados
         Random random = new Random();
 

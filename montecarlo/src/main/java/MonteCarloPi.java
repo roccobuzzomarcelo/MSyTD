@@ -1,10 +1,11 @@
-package unlu;
 
 import java.util.Random;
 
 public class MonteCarloPi {
+    public MonteCarloPi() {
+    }
 
-    public static void main(String[] args) {
+    public void metodoMonteCarlo() {
         long numeroDeSimulaciones = 100_000_000; // Número de puntos a "lanzar"
         long puntosDentroDelCirculo = 0;
         Random random = new Random();
