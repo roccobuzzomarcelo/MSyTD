@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +21,7 @@ public class MainApp extends JFrame {
     private MatrizPanel matrizPanel;
     private final JPanel mainPanel;
     private final JButton definirMatrizButton;
+    private final JButton borrarMatrizButton;
     private final JButton calcularMaximinButton;
     private final JButton calcularMaximaxButton;
     private final JButton calcularHurwiczButton;
@@ -33,24 +35,27 @@ public class MainApp extends JFrame {
         setTitle("Análisis de Matriz - Decisiones bajo Incertidumbre");
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         setLocationRelativeTo(null);
-
+        setIconImage(new ImageIcon("D:\\Universidad\\CUATRIMESTRE-VII\\modelos-y-simulacion\\MSyTD\\criterios\\src\\main\\resources\\icon.png").getImage());
         mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(new Color(245, 245, 245));
+        mainPanel.setBackground(Color.gray);
 
         // Panel Superior para definir matriz
         JPanel definirPanel = new JPanel();
-        definirPanel.setBackground(new Color(220, 220, 250));
+        definirPanel.setBackground(Color.gray);
         definirPanel.setBorder(BorderFactory.createTitledBorder("Definir Matriz"));
         filasField = new JTextField(3);
         columnasField = new JTextField(3);
         definirMatrizButton = new JButton("Definir");
+        borrarMatrizButton = new JButton("Borrar");
 
         definirPanel.add(new JLabel("Filas:"));
         definirPanel.add(filasField);
         definirPanel.add(new JLabel("Columnas:"));
         definirPanel.add(columnasField);
         definirPanel.add(definirMatrizButton);
+        definirPanel.add(borrarMatrizButton);
 
         mainPanel.add(definirPanel, BorderLayout.NORTH);
 
@@ -79,6 +84,7 @@ public class MainApp extends JFrame {
 
         // Acciones
         definirMatrizButton.addActionListener(e -> definirMatriz());
+        borrarMatrizButton.addActionListener(e -> borrarMatriz());
         calcularMaximinButton.addActionListener(e -> calcularWald());
         calcularMaximaxButton.addActionListener(e -> calcularMaximax());
         calcularHurwiczButton.addActionListener(e -> calcularHurwicz());
@@ -100,8 +106,10 @@ public class MainApp extends JFrame {
                 return;
             }
 
-            if (matrizPanel != null) {
-                mainPanel.remove(matrizPanel);
+            for (var comp : mainPanel.getComponents()) {
+                if (comp instanceof JScrollPane) {
+                    mainPanel.remove(comp); // ✅ Limpieza previa
+                }
             }
 
             matrizPanel = new MatrizPanel(filas, columnas);
@@ -115,6 +123,18 @@ public class MainApp extends JFrame {
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Ingrese números válidos para filas y columnas.");
+        }
+    }
+
+    private void borrarMatriz() {
+        if (matrizPanel != null) {
+            mainPanel.remove(matrizPanel.getParent()); // ✅ Elimina JScrollPane
+            matrizPanel = null;
+            mainPanel.revalidate();
+            mainPanel.repaint();
+            habilitarBotones(false);
+            filasField.setText("");
+            columnasField.setText("");
         }
     }
 
