@@ -12,7 +12,10 @@
 
 ## Ejecutar la aplicación
 
-Una vez instalado Java, podés ejecutar la aplicación de dos formas:
-Opción A – Ejecutar desde terminal:
+Una vez instalado Java, podés ejecutar la aplicación de la siguiente forma:
 
-    java -jar montecarlo.jar
+- Primero descargamos el repositorio:
+
+![alt text](montecarlo\src\main\resources\tutorial-1.png)
+
+- Una vez descargado el repositorio lo extraemos, y luego entramos a la carpeta `montecarlo` y luego ejecutar el `montecarlo.exe`.
