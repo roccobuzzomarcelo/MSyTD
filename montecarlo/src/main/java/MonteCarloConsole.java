@@ -4,6 +4,7 @@ import java.awt.Cursor;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,6 +22,7 @@ public class MonteCarloConsole extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1024, 758);
         setLocationRelativeTo(null);
+        setIconImage(new ImageIcon("montecarlo\\src\\main\\resources\\montecarlo.png").getImage());
 
         monteCarloDiceRoll = new MonteCarloDiceRoll();
         monteCarloPi = new MonteCarloPi();
