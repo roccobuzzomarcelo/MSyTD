@@ -16,6 +16,6 @@ Una vez instalado Java, podés ejecutar la aplicación de la siguiente forma:
 
 - Primero descargamos el repositorio:
 
-![alt text](montecarlo\tutorial-1.png)
+![alt text](montecarlo/tutorial-1.png)
 
 - Una vez descargado el repositorio lo extraemos, y luego entramos a la carpeta `montecarlo` y luego ejecutar el `montecarlo.exe`.
